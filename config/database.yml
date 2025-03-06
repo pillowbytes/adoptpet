@@ -79,6 +79,5 @@ test:
 #
 production:
   <<: *default
-  database: adoptpet_production
-  username: adoptpet
-  password: <%= ENV["ADOPTPET_DATABASE_PASSWORD"] %>
+  database: your_app_production
+  username: <%= ENV['DATABASE_URL'] %>
