@@ -6,4 +6,9 @@
     <p>Espécie: <%= @pet.species %></p>
     <p>Gênero: <%= @pet.gender %></p>
     <p>Tamanho: <%= @pet.size %></p>
+
+    <%= link_to "Remover",
+                  pet_path(@pet),
+                  data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" },
+                  class: "btn btn-danger" %>
 </div>
