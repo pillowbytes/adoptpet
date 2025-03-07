@@ -9,6 +9,15 @@ class PetsController < ApplicationController
 
   def update
     @pet.update(pet_params)
+  end
+
+  def new
+    @pet = Pet.new
+  end
+
+  def create
+    @pet = Pet.new(pet_params)
+    @pet.save
     redirect_to pet_path(@pet)
   end
 

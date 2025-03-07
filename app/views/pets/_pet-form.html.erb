@@ -1,0 +1,10 @@
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :species, collection: ["Cachorro", "Gato", "Outros"] %>
+  <%= f.input :size, collection: ["Pequeno", "Médio", "Grande"] %>
+  <%= f.input :gender, collection: ["Macho", "Fêmea"] %>
+  <%= f.input :image_url %>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
