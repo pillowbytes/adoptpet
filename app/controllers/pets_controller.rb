@@ -1,5 +1,9 @@
 class PetsController < ApplicationController
-  def index
-    @pets = Pet.all
+
+
+  private
+
+  def pet_params
+    params.require(:pet).permit(:name, :age, :species, :gender, :size, :image_url)
   end
 end
