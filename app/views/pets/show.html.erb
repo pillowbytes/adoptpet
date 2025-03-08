@@ -1,14 +1,23 @@
-<div class="container">
-    <h1><strong>Detalhes do animal</strong></h1>
-    <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="avatar"/>
+<div class="container text-center">
+<h1><strong>Detalhes do animal</strong></h1>
+
+<div class="row">
+  <div class="col">
+    <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="avatar" />
     <h1>Nome:<%= @pet.name %></h1>
     <p>Idade: <%= @pet.age %> anos</p>
     <p>Espécie: <%= @pet.species %></p>
     <p>Gênero: <%= @pet.gender %></p>
     <p>Tamanho: <%= @pet.size %></p>
-
-    <%= link_to "Remover",
+  </div>
+  <div class="col">
+  <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary"%>
+   <%= link_to "Remover",
                   pet_path(@pet),
                   data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" },
                   class: "btn btn-danger" %>
+  </div>
+</div>
+<%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>
+
 </div>

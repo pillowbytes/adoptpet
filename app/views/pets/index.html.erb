@@ -2,8 +2,11 @@
 
 <h1>Ache o seu pet 🐾</h1>
   <% @pets.each do |pet| %></p>
-    <img src="<%= pet.image_url%>"alt="Pet" width="500">
-    <h2><%= pet.name %></h2>
-    <p><%= pet.gender %></p>
+    <div class="m-5">
+      <img src="<%= pet.image_url%>"alt="Pet" width="500">
+      <h2><%= pet.name %></h2>
+      <p><%= pet.gender %></p>
+      <%= link_to "Editar", pet_path(pet), class: "btn btn-primary"%>
+    </div>
   <% end %>
 </div>
