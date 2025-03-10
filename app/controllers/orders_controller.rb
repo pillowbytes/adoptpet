@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_order, only: [:show, :destroy]
+
   def index
     @orders = current_user.orders
   end
@@ -12,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # make sure to change @pet.is_available? to false
     @order = @current_user.orders.build(order_params)
 
     if @order.save
@@ -19,7 +23,6 @@ class OrdersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    # final trocar o status de is_available = false
   end
 
   def destroy
@@ -31,6 +34,17 @@ class OrdersController < ApplicationController
   private
 
   def orders_params
-    params.require(:order).permit(:user, :pet)
+    params.require(:order).permit(:children_number,
+                                  :family_agreement,
+                                  :other_pets_in_house,
+                                  :responsible_for_pet,
+                                  :house_type,
+                                  :house_description,
+                                  :pet_id)
+  end
+
+  def set_order
+    @order = current_user.orders.find_by(id: params[:id])
+    redirect_to orders_path, alert: "Order not found." if @order.nil?
   end
 end

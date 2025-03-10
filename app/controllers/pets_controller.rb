@@ -1,10 +1,11 @@
 class PetsController < ApplicationController
   def index
+    # Pet.where(is available = true)
     @pets = Pet.all
   end
 
   def show
-    @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:id]) # & status available = true
   end
 
   def new
