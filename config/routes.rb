@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :pets
+  resources :orders, only: [:index, :show, :create, :destroy]
   root to: "pets#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
