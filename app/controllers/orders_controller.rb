@@ -7,18 +7,21 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Pet.find(params[:id])
+    @order = current_user.orders.find_by(id: params[:id])
+    redirect_to orders_path, alert: "Order not found." if @order.nil?
   end
 
   def new
-    @order = @current_user.orders.build
+    @pet = Pet.find(params[:pet_id])
+    @order = current_user.orders.build(pet: @pet)
   end
 
   def create
-    # make sure to change @pet.is_available? to false
-    @order = @current_user.orders.build(order_params)
+    @order = @pet.orders.build(order_params)
+    @order.user = current_user
 
     if @order.save
+      @pet.update(is_available: false) # making sure to change @pet.is_available? to false
       redirect_to order_path(@order), notice: "Formulário enviado com sucesso ✅"
     else
       render :new, status: :unprocessable_entity

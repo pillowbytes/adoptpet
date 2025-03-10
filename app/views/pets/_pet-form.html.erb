@@ -1,6 +1,4 @@
 <%= simple_form_for @pet do |f| %>
-  <%= f.error_notification %>
-
   <%= f.input :name %>
   <%= f.input :age %>
   <%= f.input :species, collection: ["Cachorro", "Gato", "Outros"] %>

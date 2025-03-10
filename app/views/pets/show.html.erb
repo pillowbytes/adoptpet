@@ -17,6 +17,7 @@
                   pet_path(@pet),
                   data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" },
                   class: "btn btn-danger" %>
+    <%= link_to "Adote #{@pet.name}", new_pet_order_path(@pet), class: "btn btn-success" %>
   </div>
 </div>
 <%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>

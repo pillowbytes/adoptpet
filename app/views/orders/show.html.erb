@@ -1,26 +1,9 @@
-<div class="container text-center">
-<h1><strong>Detalhes da Adocao</strong></h1>
+<h1>Meus Bichihos</h1>
 
-<div class="row">
-  <div class="col">
-    <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="avatar" />
-    <h1>Nome:<%= @pet.name %></h1>
-    <p>Idade: <%= @pet.age %> anos</p>
-    <p>Espécie: <%= @pet.species %></p>
-    <p>Gênero: <%= @pet.gender %></p>
-    <p>Tamanho: <%= @pet.size %></p>
-  </div>
-  <div class="col">
-  <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary"%>
-   <%= link_to "Remover",
-                  pet_path(@pet),
-                  data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" },
-                  class: "btn btn-danger" %>
-  </div>
-</div>
-<%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>
-
-</div>
-
-
-rails generate migration AddDetailsToOrders children_number:integer family_agreement:boolean other_pets_in_house:boolean responsible_for_pet:string house_type:string house_description:text
+<ul>
+  <% current_user.pets.each do |pet| %>
+    <li>
+      <%= link_to pet.name, pet_path(pet) %> - Adopted on <%= pet.orders.first.created_at.strftime("%B %d, %Y") %>
+    </li>
+  <% end %>
+</ul>

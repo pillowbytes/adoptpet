@@ -18,7 +18,7 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to pet_path(@pet), notice: "Amiguinho Criado!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
