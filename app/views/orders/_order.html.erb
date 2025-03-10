@@ -1,12 +1,37 @@
-<%= simple_form_for @pet do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @order do |f| %>
+  <div>
+    <%= f.label :children_number, "Moram crianças na sua casa?" %><br>
+    <%= f.radio_button :children_number, true %> Sim
+    <%= f.radio_button :children_number, false %> Não
+  </div>
 
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :species, collection: ["Cachorro", "Gato", "Outros"] %>
-  <%= f.input :size, collection: ["Pequeno", "Médio", "Grande"] %>
-  <%= f.input :gender, collection: ["Macho", "Fêmea"] %>
-  <%= f.input :image_url %>
+  <div>
+    <%= f.label :family_agreement, "Todos que moram com você estão de acordo com a adoção?" %><br>
+    <%= f.radio_button :family_agreement, true %> Sim
+    <%= f.radio_button :family_agreement, false %> Não
+  </div>
 
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <div>
+    <%= f.label :other_pets_in_house, "Tem outros pets na sua casa?" %><br>
+    <%= f.radio_button :other_pets_in_house, true %> Sim
+    <%= f.radio_button :other_pets_in_house, false %> Não
+  </div>
+
+  <div>
+    <%= f.label :responsible_for_pet, "O responsável pelo Pet será você ou outra pessoa?" %><br>
+    <%= f.radio_button :responsible_for_pet, "Eu" %> Eu
+    <%= f.radio_button :responsible_for_pet, "Outra pessoa" %> Outra pessoa
+  </div>
+
+  <div>
+    <%= f.label :house_type, "Você mora em casa ou apartamento?" %><br>
+    <%= f.select :house_type, ["Casa", "Apartamento"], prompt: "Selecione" %>
+  </div>
+
+  <div>
+    <%= f.label :house_description, "Informação descritiva sobre sua casa (tela, portão,...)" %><br>
+    <%= f.text_field :house_description %>
+  </div>
+
+  <%= f.submit "Enviar" %>
 <% end %>

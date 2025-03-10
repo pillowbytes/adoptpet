@@ -7,17 +7,18 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = @current_user.orders.build
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = @current_user.orders.build(order_params)
 
     if @order.save
-      redirect_to order_path(@order), notice: "Cadastro de adoção criado!"
+      redirect_to order_path(@order), notice: "Formulário enviado com sucesso ✅"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+    # final trocar o status de is_available = false
   end
 
   def destroy
