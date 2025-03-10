@@ -1,12 +1,19 @@
 <div class="container">
-
-<h1>Ache o seu pet 🐾</h1>
-  <% @pets.each do |pet| %></p>
-    <div class="m-5">
-      <img src="<%= pet.image_url%>"alt="Pet" width="500">
-      <h2><%= pet.name %></h2>
-      <p><%= pet.gender %></p>
-      <%= link_to "Editar", pet_path(pet), class: "btn btn-primary"%>
+  <div class="row">
+    <div class="col">
+      <h1>Ache o seu pet 🐾</h1>
     </div>
+    <div class="col"><%= link_to "Adicionar Bichinho", new_pet_path, class: "btn btn-secondary"%>
+    </div>
+  </div>
+
+
+  <% @pets.each do |pet| %></p>
+  <div class="m-5">
+    <img src="<%= pet.image_url%>" alt="Pet" width="500">
+    <h2><%= pet.name %></h2>
+    <p><%= pet.gender %></p>
+    <%= link_to "Ver Detalhes", pet_path(pet), class: "btn btn-primary"%>
+  </div>
   <% end %>
 </div>
