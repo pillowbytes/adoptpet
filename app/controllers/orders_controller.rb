@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Pet.find(params[:id])
   end
 
   def new
