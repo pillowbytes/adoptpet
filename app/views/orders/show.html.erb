@@ -1,9 +1,9 @@
-<div class="container" style="margin-top: 20px;">
-<h1><strong>Detalhes do animal</strong></h1>
+<div class="container text-center">
+<h1><strong>Detalhes da Adocao</strong></h1>
 
 <div class="row">
   <div class="col">
-    <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="avatar-bordered" />
+    <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="avatar" />
     <h1>Nome:<%= @pet.name %></h1>
     <p>Idade: <%= @pet.age %> anos</p>
     <p>Espécie: <%= @pet.species %></p>
@@ -11,8 +11,7 @@
     <p>Tamanho: <%= @pet.size %></p>
   </div>
   <div class="col">
-
- <br> <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary"%>
+  <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary"%>
    <%= link_to "Remover",
                   pet_path(@pet),
                   data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" },
@@ -20,3 +19,8 @@
   </div>
 </div>
 <%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>
+
+</div>
+
+
+rails generate migration AddDetailsToOrders children_number:integer family_agreement:boolean other_pets_in_house:boolean responsible_for_pet:string house_type:string house_description:text

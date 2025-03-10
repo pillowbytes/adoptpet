@@ -3,19 +3,32 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :destroy]
 
   def index
+    @orders = current_user.orders
   end
 
   def show
+    @order = Pet.find(params[:id])
   end
 
   def new
+    @order = @current_user.orders.build
   end
 
   def create
     # make sure to change @pet.is_available? to false
+    @order = @current_user.orders.build(order_params)
+
+    if @order.save
+      redirect_to order_path(@order), notice: "Formulário enviado com sucesso ✅"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
   end
 
   private
