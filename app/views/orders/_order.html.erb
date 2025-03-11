@@ -1,8 +1,20 @@
+<% if @order.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>Erros ao enviar o formulário:</h4>
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= simple_form_for @order do |f| %>
+  <%= f.hidden_field :pet_id, value: @pet.id %>
+
   <div>
-    <%= f.label :children_number, "Moram crianças na sua casa?" %><br>
-    <%= f.radio_button :children_number, true %> Sim
-    <%= f.radio_button :children_number, false %> Não
+    <%= f.label :children_number, "Quantas crianças moram na sua casa?" %><br>
+    <%= f.number_field :children_number, min: 0 %>
   </div>
 
   <div>
@@ -30,7 +42,7 @@
 
   <div>
     <%= f.label :house_description, "Informação descritiva sobre sua casa (tela, portão,...)" %><br>
-    <%= f.text_field :house_description %>
+    <%= f.text_area :house_description %>
   </div>
 
   <%= f.submit "Enviar" %>

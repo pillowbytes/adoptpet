@@ -8,5 +8,5 @@ class Order < ApplicationRecord
   validates :responsible_for_pet, presence: true, length: { maximum: 255 }
   validates :house_type, presence: true, inclusion: { in: %w[Casa Apartamento Sítio],
                                                       message: "Tipo de casa inválido" }
-  validates :house_description, presence: true, length: { minimum: 10, maximum: 1000 }
+  validates :house_description, presence: true, length: { minimum: 5, maximum: 1000 }
 end

@@ -17,11 +17,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = @pet.orders.build(order_params)
-    @order.user = current_user
+    @pet = Pet.find_by(id: params[:order][:pet_id])
+    @order = current_user.orders.build(order_params)
+    @order.pet = @pet
 
     if @order.save
-      @pet.update(is_available: false) # making sure to change @pet.is_available? to false
+      @order.pet.update(is_available: false) # Mark pet as unavailable
       redirect_to order_path(@order), notice: "Formulário enviado com sucesso ✅"
     else
       render :new, status: :unprocessable_entity
@@ -36,14 +37,17 @@ class OrdersController < ApplicationController
 
   private
 
-  def orders_params
+  def order_params
     params.require(:order).permit(:children_number,
-                                  :family_agreement,
-                                  :other_pets_in_house,
                                   :responsible_for_pet,
                                   :house_type,
                                   :house_description,
-                                  :pet_id)
+                                  :pet_id).merge(
+                                    family_agreement: ActiveModel::Type::Boolean
+                                                      .new.cast(params[:order][:family_agreement]),
+                                    other_pets_in_house: ActiveModel::Type::Boolean
+                                                      .new.cast(params[:order][:other_pets_in_house])
+    )
   end
 
   def set_order
