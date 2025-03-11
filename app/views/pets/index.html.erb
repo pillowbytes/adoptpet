@@ -12,8 +12,9 @@
     <% @pets.each do |pet| %>
       <div class="col d-flex justify-content-center">
         <div class="pet-card">
-          <%= image_tag pet.image_url, alt: pet.name, class: "pet-image" %>
-
+          <% if pet.image_url %>
+            <%= image_tag pet.image_url, alt: pet.name, class: "pet-image" %>
+          <% end %>
           <div class="pet-info">
             <div class="pet-name"><strong><%= pet.name %></strong></div>
             <div class="pet-gender"><%= pet.gender %></div>

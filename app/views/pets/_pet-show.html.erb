@@ -6,8 +6,10 @@
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
       <div class="pet-show-image">
-        <% if @pet.photo.attached? %>
-          <%= cl_image_tag @pet.photo.key, height: 300, width: 400, crop: :fill %>
+        <% if @pet.photos.attached? %>
+          <% @pet.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
         <% elsif @pet.species == "Cachorro" %>
           <%= image_tag "dog", alt: @pet.name, class: "pet-show-img" %>
         <% else %>
