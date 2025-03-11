@@ -46,6 +46,8 @@ gem "devise"
 # gem 'rack'
 gem 'rack', require: 'rack'
 
+gem "dotenv-rails"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
