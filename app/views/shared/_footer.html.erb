@@ -1,26 +1,37 @@
-<div class="footer">
+ <div class="footer">
 
-  <div class="row-footer">
+    <div class="row-footer">
+      <div class="col-footer logo-container">
+        <%= image_tag "adoptpet-logo.png", alt: "Logo", class: "footer-image" %>
+      </div>
 
-    <div class="col-footer">
-      <%= image_tag "adoptpet-logo.png", alt: "Logo", class: "footer-image" %>
+      <div class="col-footer">
+        <h3>Menu</h3>
+          <li><a href="#">Quero adotar</a></li>
+          <li><a href="#">Quero doar</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Cadastre-se</a></li>
+      </div>
+
+      <div class="col-footer">
+        <h3>Siga a AdoptPet</h3>
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <div class="col-footer">
+        <h3>Cadastre-se e receba novidades</h3>
+        <form action="#" method="post" class="newsletter-form">
+          <input type="email" name="email" placeholder="Informe seu e-mail" required>
+          <label>
+            <input type="checkbox" name="privacy-policy" required>
+            Li e aceito as <a href="#"><strong> políticas de privacidade</strong></a>
+          </label>
+          <div class="footer-btn" type="submit">Enviar</div>
+        </form>
+
+      </div>
     </div>
-
-    <div class="col-footer">
-      <h3>Menu</h3>
-        <ul>
-            <li><a href="#">Quero adotar</a></li>
-            <li><a href="#">Quero doar</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Cadastre-se</a></li>
-        </ul>
-    </div>
-
-    <div class="col-footer">Column 3</div>
-
-
-    <div class="col-footer">Column 4</div>
-
-
   </div>
-</div>
