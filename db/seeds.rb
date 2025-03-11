@@ -20,8 +20,8 @@ pets = [
   {
     name: "Luna",
     age: 3,
-    species: "Dog",
-    gender: "Female",
+    species: "Cachorro",
+    gender: "Fêmea",
     size: "Medium",
     image_url: "https://www.pedigree.com.br/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf2401/files/2024-09/celebre-o-dia-nacional-da-adocao-de-animais_0.jpg",
     is_available: true
@@ -29,8 +29,8 @@ pets = [
   {
     name: "Max",
     age: 2,
-    species: "Cat",
-    gender: "Male",
+    species: "Gato",
+    gender: "Macho",
     size: "Small",
     image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/800px-Cat03.jpg",
     is_available: true
@@ -38,8 +38,8 @@ pets = [
   {
     name: "Rocky",
     age: 5,
-    species: "Dog",
-    gender: "Male",
+    species: "Cachorro",
+    gender: "Macho",
     size: "Large",
     image_url: "https://blog-static.petlove.com.br/wp-content/uploads/2017/07/curiosidades-sobre-vira-latas-3.jpg",
     is_available: false

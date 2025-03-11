@@ -1,8 +1,14 @@
 <nav class="navbar">
   <div class="navbar-left">
     <%= link_to root_path, class: "navbar-left-link" do %>
-      <i class="fa-solid fa-paw logo-icon"></i>
+      <i class="fa-solid fa-bars logo-icon"></i>
       <span class="navbar-brand">AdoptPet</span>
+    <% end %>
+  </div>
+
+  <div class="navbar-center">
+    <%= link_to root_path, class: "navbar-center-link" do %>
+      <i class="fa-solid fa-paw logo-icon-center"></i>
     <% end %>
   </div>
 
