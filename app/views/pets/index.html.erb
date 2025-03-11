@@ -3,6 +3,17 @@
     <%= render 'filter' %>
   <div class="row row-cols-1 row-cols-md-4 g-4 align-items-stretch">
     <% @pets.each do |pet| %>
+      <div class="col d-flex justify-content-center">
+        <div class="pet-card">
+          <% if pet.image_url %>
+            <%= image_tag pet.image_url, alt: pet.name, class: "pet-image" %>
+          <% end %>
+          <div class="pet-info">
+            <div class="pet-name"><strong><%= pet.name %></strong></div>
+            <div class="pet-gender"><%= pet.gender %></div>
+            <%= link_to "Ver Detalhes", pet_path(pet), class: "details-button" %>
+          </div>
+
     <div class="col d-flex justify-content-center">
       <div class="pet-card">
         <%= image_tag pet.image_url, alt: pet.name, class: "pet-image" %>

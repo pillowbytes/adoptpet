@@ -6,7 +6,15 @@
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
       <div class="pet-show-image">
-        <%= image_tag @pet.image_url, alt: @pet.name, class: "pet-show-img" %>
+        <% if @pet.photos.attached? %>
+          <% @pet.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        <% elsif @pet.species == "Cachorro" %>
+          <%= image_tag "dog", alt: @pet.name, class: "pet-show-img" %>
+        <% else %>
+          <%= image_tag "cat", alt: @pet.name, class: "pet-show-img" %>
+        <% end %>
       </div>
     </div>
 
