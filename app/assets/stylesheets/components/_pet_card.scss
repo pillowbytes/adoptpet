@@ -19,7 +19,7 @@
 }
 
 .pet-info {
-  background: white;
+  background: #FEF7EF;
   border: 2px solid #2259AB;
   border-radius: 36px;
   width: 100%;
@@ -42,11 +42,11 @@
 }
 
 .details-button {
-  background: #2259AB;
+  background: linear-gradient(to right, $primary-blue, $primary-blue-light);
   color: white;
   font-size: 14px;
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 25px;
   text-decoration: none;
   display: inline-block;
   margin-top: 10px;

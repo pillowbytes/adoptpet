@@ -1,0 +1,48 @@
+.filter-btn {
+  background: white;
+  color: $primary-blue;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  // font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.fi-display {
+  display: inline-block;
+  margin: 5px;
+}
+
+.dropdown-menu {
+  background: white;
+  border-radius: 10px;
+  padding: 5px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  // font-weight: bold;
+  color: $primary-blue;
+  transition: background 0.3s ease-in-out;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(to right, $primary-orange, $primary-orange-light);
+  color: white;
+}
