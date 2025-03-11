@@ -1,7 +1,11 @@
 // Specific CSS for your home-page
 
 h1, h2 {
-  color: $primary-blue;
+  font-weight: 200;
+  background: linear-gradient(to right, $primary-blue, $primary-blue-light);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 a {

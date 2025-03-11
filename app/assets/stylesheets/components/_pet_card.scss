@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -31,7 +30,11 @@
 .pet-name {
   font-family: "Alfa Slab One", sans-serif;
   font-size: 20px;
-  color: #2259AB;
+  font-weight: 100;
+  background: linear-gradient(to right, $primary-blue, $primary-blue-light);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pet-gender {
