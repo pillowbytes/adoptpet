@@ -1,0 +1,63 @@
+<div class="container m-5">
+  <div class="row g-5">
+    <%= simple_form_for :filters, url: pets_path, as: '', method: :get, local: true, html: { data: { controller: "filters" }, class: "filter-form" } do |f| %>
+
+      <div class="col-auto m-1 fi-display">
+        <div class="dropdown">
+          <button class="filter-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-default-text="Espécie">
+            <i class="fas fa-paw"></i> <span class="dropdown-label"><%= params[:species].present? ? params[:species] : "Espécie" %></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% [["Todos", ""], ["Cachorro", "Cachorro"], ["Gato", "Gato"], ["Outros", "Outros"]].each do |label, value| %>
+              <li><a class="dropdown-item" href="#" data-value="<%= value %>" data-action="click->filters#applyFilter"><%= label %></a></li>
+            <% end %>
+          </ul>
+          <%= f.hidden_field :species, value: params[:species], data: { filters_target: "speciesField" } %>
+        </div>
+      </div>
+
+      <div class="col-auto m-1 fi-display">
+        <div class="dropdown">
+          <button class="filter-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-default-text="Gênero">
+            <i class="fas fa-venus-mars"></i> <span class="dropdown-label"><%= params[:gender].present? ? params[:gender] : "Gênero" %></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% [["Todos", ""], ["Macho", "Macho"], ["Fêmea", "Fêmea"]].each do |label, value| %>
+              <li><a class="dropdown-item" href="#" data-value="<%= value %>" data-action="click->filters#applyFilter"><%= label %></a></li>
+            <% end %>
+          </ul>
+          <%= f.hidden_field :gender, value: params[:gender], data: { filters_target: "genderField" } %>
+        </div>
+      </div>
+
+      <div class="col-auto m-1 fi-display">
+        <div class="dropdown">
+          <button class="filter-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-default-text="Tamanho">
+            <i class="fas fa-ruler-combined"></i> <span class="dropdown-label"><%= params[:size].present? ? params[:size] : "Tamanho" %></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% [["Todos", ""], ["Pequeno", "Pequeno"], ["Médio", "Médio"], ["Grande", "Grande"]].each do |label, value| %>
+              <li><a class="dropdown-item" href="#" data-value="<%= value %>" data-action="click->filters#applyFilter"><%= label %></a></li>
+            <% end %>
+          </ul>
+          <%= f.hidden_field :size, value: params[:size], data: { filters_target: "sizeField" } %>
+        </div>
+      </div>
+
+      <div class="col-auto m-1 fi-display">
+        <div class="dropdown">
+          <button class="filter-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-default-text="Faixa Etária">
+            <i class="fas fa-hourglass-half"></i> <span class="dropdown-label"><%= params[:age_range].present? ? params[:age_range] : "Faixa Etária" %></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% [["Todos", ""], ["0-1 anos", "0-1"], ["2-5 anos", "2-5"], ["6+ anos", "6+"]].each do |label, value| %>
+              <li><a class="dropdown-item" href="#" data-value="<%= value %>" data-action="click->filters#applyFilter"><%= label %></a></li>
+            <% end %>
+          </ul>
+          <%= f.hidden_field :age_range, value: params[:age_range], data: { filters_target: "ageRangeField" } %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

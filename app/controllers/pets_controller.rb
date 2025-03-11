@@ -1,7 +1,18 @@
 class PetsController < ApplicationController
   def index
-    # Pet.where(is available = true)
+    filters = params[:filters] || {}
+    # @pets = Pet.where(is_available: true)
     @pets = Pet.all
+
+    @pets = @pets.where(species: filters[:species]) if filters[:species].present?
+    @pets = @pets.where(gender: filters[:gender]) if filters[:gender].present?
+    @pets = @pets.where(size: filters[:size]) if filters[:size].present?
+
+    if filters[:age_range].present?
+      min_age, max_age = parse_age_range(filters[:age_range])
+      @pets = @pets.where("age >= ?", min_age) if min_age.present?
+      @pets = @pets.where("age <= ?", max_age) if max_age.present?
+    end
   end
 
   def show
@@ -42,5 +53,18 @@ class PetsController < ApplicationController
 
   def pet_params
     params.require(:pet).permit(:name, :age, :species, :gender, :size, photos: [])
+  end
+
+  def parse_age_range(range)
+    case range
+    when "0-1"
+      [0, 1]
+    when "2-5"
+      [2, 5]
+    when "6+"
+      [6, nil]
+    else
+      [nil, nil]
+    end
   end
 end

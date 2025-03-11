@@ -27,13 +27,12 @@
         <p><strong>Tamanho:</strong> <%= @pet.size %></p>
 
         <div class="pet-show-buttons">
-          <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary" %>
-          <%= link_to "Remover", pet_path(@pet), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" }, class: "btn btn-danger" %>
+          <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary-blue" %>
           <%= link_to "Adote #{@pet.name}", new_user_order_path(pet_id: @pet.id), class: "btn btn-primary-orange" %>      </div>
     </div>
   </div>
 
   <div class="text-center mt-4">
-    <%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>
+    <%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-primary-orange" %>
   </div>
 </div>
