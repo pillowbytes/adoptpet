@@ -5,8 +5,7 @@
     <% @pets.each do |pet| %>
     <div class="col d-flex justify-content-center">
       <div class="pet-card">
-        <%= image_tag pet.image_url, alt: pet.name, class: "pet-image" %>
-
+        <%= image_tag pet.photos.attached? ? url_for(pet.photos.first) : asset_path("placeholder.png"), alt: pet.name, class: "pet-image" %>
         <div class="pet-info">
           <div class="pet-name"><strong><%= pet.name %></strong></div>
           <div class="pet-gender"><%= pet.gender %></div>
