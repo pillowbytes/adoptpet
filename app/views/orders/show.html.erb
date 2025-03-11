@@ -1,9 +1,37 @@
-<h1>Meus Bichihos</h1>
+<div class="order-card">
+  <h2 class="order-title">Detalhes da Adoção</h2>
 
-<ul>
-  <% current_user.pets.each do |pet| %>
-    <li>
-      <%= link_to pet.name, pet_path(pet) %> - Adopted on <%= pet.orders.first.created_at.strftime("%B %d, %Y") %>
-    </li>
-  <% end %>
-</ul>
+  <div class="order-container">
+    <!-- Pet Section -->
+    <div class="pet-section">
+      <div class="pet-card">
+        <img src="<%= @order.pet.image_url %>" alt="<%= @order.pet.name %>" class="pet-image">
+        <div class="pet-info">
+          <h3><i class="fas fa-paw"></i> <%= @order.pet.name %></h3>
+          <p><i class="fas fa-calendar-alt"></i> <strong>Idade:</strong> <%= @order.pet.age %> anos</p>
+          <p><i class="fas fa-venus-mars"></i> <strong>Gênero:</strong> <%= @order.pet.gender %></p>
+          <p><i class="fas fa-weight"></i> <strong>Tamanho:</strong> <%= @order.pet.size %></p>
+          <p><i class="fas fa-dog"></i> <strong>Espécie:</strong> <%= @order.pet.species %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Section -->
+    <div class="order-info">
+      <h4><i class="fas fa-file-alt"></i> Informações da Adoção</h4>
+      <hr>
+      <p><i class="fas fa-calendar-check"></i> <strong>Adotado em:</strong> <%= @order.created_at.strftime("%d/%m/%Y") %></p>
+      <p><i class="fas fa-child"></i> <strong>Crianças na casa:</strong> <%= @order.children_number %></p>
+      <p><i class="fas fa-users"></i> <strong>Todos concordam com a adoção?</strong> <%= @order.family_agreement ? "Sim" : "Não" %></p>
+      <p><i class="fas fa-paw"></i> <strong>Outros pets em casa?</strong> <%= @order.other_pets_in_house ? "Sim" : "Não" %></p>
+      <p><i class="fas fa-user"></i> <strong>Responsável pelo pet:</strong> <%= @order.responsible_for_pet %></p>
+      <p><i class="fas fa-home"></i> <strong>Tipo de moradia:</strong> <%= @order.house_type %></p>
+      <p><i class="fas fa-info-circle"></i> <strong>Descrição da casa:</strong> <%= @order.house_description %></p>
+    </div>
+  </div>
+</div>
+
+<!-- Back Button -->
+<div class="text-center mt-4">
+  <%= link_to "Voltar para Minhas Adoções", orders_path, class: "btn btn-secondary" %>
+</div>

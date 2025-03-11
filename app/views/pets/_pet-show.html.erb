@@ -1,0 +1,31 @@
+<div class="pet-show">
+  <div class="pet-show-header">
+    <h1><strong>Detalhes do Animal</strong></h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <div class="pet-show-image">
+        <%= image_tag @pet.image_url, alt: @pet.name, class: "pet-show-img" %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="pet-show-info">
+        <h2 class="pet-show-name"><%= @pet.name %></h2>
+        <p><strong>Idade:</strong> <%= @pet.age %> anos</p>
+        <p><strong>Espécie:</strong> <%= @pet.species %></p>
+        <p><strong>Gênero:</strong> <%= @pet.gender %></p>
+        <p><strong>Tamanho:</strong> <%= @pet.size %></p>
+
+        <div class="pet-show-buttons">
+          <%= link_to "Editar", edit_pet_path(@pet), class: "btn btn-primary" %>
+          <%= link_to "Remover", pet_path(@pet), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{@pet.name} 😿?" }, class: "btn btn-danger" %>
+          <%= link_to "Adote #{@pet.name}", new_user_order_path(pet_id: @pet.id), class: "btn btn-primary-orange" %>      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to "Retornar à Página Inicial", root_path, class: "btn btn-secondary" %>
+  </div>
+</div>

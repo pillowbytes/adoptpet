@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.btn-primary-orange {
+  background-color: $primary-orange;
+  color: white;
+}
+
+h1, h2 {
+  color: $primary-blue;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #FEF7EF;
+}

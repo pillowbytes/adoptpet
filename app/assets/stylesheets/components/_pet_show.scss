@@ -1,0 +1,47 @@
+.pet-show {
+  text-align: center;
+}
+
+.pet-show-header h1 {
+  color: $primary-blue;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+
+.pet-show-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pet-show-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.pet-show-info {
+  background: white;
+  border: 2px solid #2259AB;
+  border-radius: 36px;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.pet-show-name {
+  font-family: "Alfa Slab One", sans-serif;
+  font-size: 26px;
+  color: #2259AB;
+  text-align: center;
+}
+
+.pet-show-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}

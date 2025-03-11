@@ -1,0 +1,13 @@
+<div class="pet-card">
+  <img src="<%= image_url %>" alt="<%= name %>" class="pet-image">
+
+  <div class="pet-info">
+    <div class="pet-name">
+      <strong><%= name %></strong>
+    </div>
+    <div class="pet-gender">
+      <%= gender %>
+    </div>
+    <%= link_to "Ver Detalhes", details_path, class: "details-button" %>
+  </div>
+</div>

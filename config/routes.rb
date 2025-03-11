@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-
-  resources :pets do
-    resources :orders, only: [:new, :create]
-  end
-  
-  resources :orders, only: [:index, :show, :destroy]
+  resources :pets
+  resources :orders, only: [:index, :show, :new, :create, :destroy]
 
   root to: "pets#index"
+
+  get 'users/orders/new/:pet_id', to: 'orders#new', as: 'new_user_order'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
