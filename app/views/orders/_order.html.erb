@@ -8,42 +8,43 @@
     </ul>
   </div>
 <% end %>
+<div class="order-container">
+  <%= simple_form_for @order do |f| %>
+    <%= f.hidden_field :pet_id, value: @pet.id %>
 
-<%= simple_form_for @order do |f| %>
-  <%= f.hidden_field :pet_id, value: @pet.id %>
+    <div>
+      <%= f.label :children_number, "Quantas crianças moram na sua casa?" %><br>
+      <%= f.number_field :children_number, min: 0 %>
+    </div>
 
-  <div>
-    <%= f.label :children_number, "Quantas crianças moram na sua casa?" %><br>
-    <%= f.number_field :children_number, min: 0 %>
-  </div>
+    <div>
+      <%= f.label :family_agreement, "Todos que moram com você estão de acordo com a adoção?" %><br>
+      <%= f.radio_button :family_agreement, true %> Sim
+      <%= f.radio_button :family_agreement, false %> Não
+    </div>
 
-  <div>
-    <%= f.label :family_agreement, "Todos que moram com você estão de acordo com a adoção?" %><br>
-    <%= f.radio_button :family_agreement, true %> Sim
-    <%= f.radio_button :family_agreement, false %> Não
-  </div>
+    <div>
+      <%= f.label :other_pets_in_house, "Tem outros pets na sua casa?" %><br>
+      <%= f.radio_button :other_pets_in_house, true %> Sim
+      <%= f.radio_button :other_pets_in_house, false %> Não
+    </div>
 
-  <div>
-    <%= f.label :other_pets_in_house, "Tem outros pets na sua casa?" %><br>
-    <%= f.radio_button :other_pets_in_house, true %> Sim
-    <%= f.radio_button :other_pets_in_house, false %> Não
-  </div>
+    <div>
+      <%= f.label :responsible_for_pet, "O responsável pelo Pet será você ou outra pessoa?" %><br>
+      <%= f.radio_button :responsible_for_pet, "Eu" %> Eu
+      <%= f.radio_button :responsible_for_pet, "Outra pessoa" %> Outra pessoa
+    </div>
 
-  <div>
-    <%= f.label :responsible_for_pet, "O responsável pelo Pet será você ou outra pessoa?" %><br>
-    <%= f.radio_button :responsible_for_pet, "Eu" %> Eu
-    <%= f.radio_button :responsible_for_pet, "Outra pessoa" %> Outra pessoa
-  </div>
+    <div>
+      <%= f.label :house_type, "Você mora em casa ou apartamento?" %><br>
+      <%= f.select :house_type, ["Casa", "Apartamento"], prompt: "Selecione" %>
+    </div>
 
-  <div>
-    <%= f.label :house_type, "Você mora em casa ou apartamento?" %><br>
-    <%= f.select :house_type, ["Casa", "Apartamento"], prompt: "Selecione" %>
-  </div>
+    <div>
+      <%= f.label :house_description, "Informação descritiva sobre sua casa (tela, portão,...)" %><br>
+      <%= f.text_area :house_description %>
+    </div>
 
-  <div>
-    <%= f.label :house_description, "Informação descritiva sobre sua casa (tela, portão,...)" %><br>
-    <%= f.text_area :house_description %>
-  </div>
-
-  <%= f.submit "Enviar" %>
-<% end %>
+    <%= f.submit "Enviar" %>
+  <% end %>
+</div>
