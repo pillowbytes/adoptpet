@@ -3,10 +3,10 @@
 
   <div class="order-container">
     <!-- Pet Section -->
-    <div class="pet-section">
-      <div class="pet-card">
-        <img src="<%= @order.pet.image_url %>" alt="<%= @order.pet.name %>" class="pet-image">
-        <div class="pet-info">
+    <div class="order-pet-section">
+      <div class="order-pet-card">
+        <img src="<%= @order.pet.image_url %>" alt="<%= @order.pet.name %>" class="order-pet-image">
+        <div class="order-pet-info">
           <h3><i class="fas fa-paw"></i> <%= @order.pet.name %></h3>
           <p><i class="fas fa-calendar-alt"></i> <strong>Idade:</strong> <%= @order.pet.age %> anos</p>
           <p><i class="fas fa-venus-mars"></i> <strong>Gênero:</strong> <%= @order.pet.gender %></p>
