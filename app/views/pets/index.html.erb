@@ -10,6 +10,7 @@
           <div class="pet-name"><strong><%= pet.name %></strong></div>
           <div class="pet-gender"><%= pet.gender %></div>
           <%= link_to "Ver Detalhes", pet_path(pet), class: "details-button" %>
+          <%= link_to "Remover", pet_path(pet), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja remover #{pet.name} 😿?" }, class: "btn btn-primary-orange" %>
         </div>
       </div>
     </div>
