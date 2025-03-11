@@ -1,4 +1,5 @@
 class Pet < ApplicationRecord
+  has_one_attached :photo
   has_many :orders, dependent: :destroy
   has_many :users, through: :orders
   SPECIES = ["Cachorro", "Gato", "Outros"].freeze
