@@ -1,0 +1,54 @@
+<div class="pet-show">
+  <h1 class="pet-show-header">
+  Detalhes do Animal
+  </h1>
+
+  <div class="row justify-content-center align-items-start">
+
+    <div class="col-md-6 d-flex justify-content-start">
+      <div class="pet-show-image">
+        <% if @pet.photos.attached? && @pet.photos.any? %>
+          <% @pet.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: "pet-show-img" %>
+          <% end %>
+        <% elsif @pet.species == "Cachorro" %>
+          <%= image_tag "dog", alt: @pet.name, class: "pet-show-img" %>
+        <% else %>
+          <%= image_tag "cat", alt: @pet.name, class: "pet-show-img" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center">
+      <div class="pet-show-info">
+
+        <h2 class="pet-show-name">
+          <%= @pet.name %>
+          <% if @pet.species == "Gato" %>
+            <span class="emoji">🐱</span>
+          <% elsif @pet.species == "Cachorro" %>
+            <span class="emoji">🐶</span>
+          <% end %>
+        </h2>
+
+        <p>
+          <i class="fa-solid fa-cake-candles"></i> <strong>  <%= @pet.age %> anos</strong>
+        </p>
+        <p>
+          <i class="fa-solid fa-venus-mars"></i> <strong>  <%= @pet.gender %></strong>
+        </p>
+        <p>
+          <i class="fa-solid fa-paw"></i> <strong>  <%= @pet.size %></strong>
+        </p>
+
+        <p class="pet-show-description">
+          <%= @pet.description.present? ? @pet.description : "Descrição não adicionada a este pet." %>
+        </p>
+
+        <div class="pet-show-buttons">
+          <%= link_to "Adote #{@pet.name}", new_user_order_path(pet_id: @pet.id), class: "btn btn-primary-orange" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,13 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id]) # & status available = true
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render partial: 'pets/pet_show', locals: { pet: @pet }
+      end
+    end
   end
 
   def new
