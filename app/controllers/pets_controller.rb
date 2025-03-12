@@ -52,7 +52,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :age, :species, :gender, :size, photos: [])
+    params.require(:pet).permit(:name, :age, :species, :gender, :size, :description, photos: [])
   end
 
   def parse_age_range(range)

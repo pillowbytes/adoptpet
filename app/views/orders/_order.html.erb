@@ -8,7 +8,6 @@
     </ul>
   </div>
 <% end %>
-
 <div class="order-container">
   <%= simple_form_for @order do |f| %>
     <%= f.hidden_field :pet_id, value: @pet.id %>
@@ -19,6 +18,7 @@
     </div>
 
     <div>
+
       <%= f.label :family_agreement, "Todos que moram com você estão de acordo com a adoção?" %><br>
       <%= f.radio_button :family_agreement, true %> Sim
       <%= f.radio_button :family_agreement, false %> Não
@@ -48,4 +48,5 @@
 
     <%= f.submit "Enviar" %>
   <% end %>
-  </div>
+
+</div>
