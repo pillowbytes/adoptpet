@@ -1,0 +1,39 @@
+.center-container{
+  padding: 50px;
+  text-align: center;
+  align-items: center;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+}
+
+.order-container {
+  width: 500px;
+  background: #FEF7EF;
+  border-radius: 36px;
+  border: 2px solid $primary-blue;
+  text-align: center;
+  padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    label {
+      color: $primary-blue;
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      line-height: auto;
+    }
+    radio_button {
+      background-color: $primary-orange;
+    }
+}
