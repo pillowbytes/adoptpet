@@ -1,12 +1,17 @@
-<%= simple_form_for @pet do |f| %>
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :species, collection: ["Cachorro", "Gato", "Outros"] %>
-  <%= f.input :size, collection: ["Pequeno", "Médio", "Grande"] %>
-  <%= f.input :gender, collection: ["Macho", "Fêmea"] %>
-  <%= f.input :description %>
+<div class="form-container">
+  <%= simple_form_for @pet do |f| %>
+    <div class="form-group">
+      <%= f.input :name, label: "Nome do bichinho" %>
+      <%= f.input :age, label: "Idade estimada" %>
+      <%= f.input :species, label: "Espécie", collection: ["Cachorro", "Gato", "Outros"] %>
+      <%= f.input :size, label: "Tamanho", collection: ["Pequeno", "Médio", "Grande"] %>
+      <%= f.input :gender, label: "Gênero", collection: ["Macho", "Fêmea"] %>
+      <%= f.input :description, label: "Descrição" %>
+    </div>
 
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photos, as: :file, label: "Fotos", input_html: { multiple: true } %>
 
-  <%= f.button :submit, class: "btn btn-primary-blue" %>
-<% end %>
+    <%= f.button :submit, "Criar Pet", class: "btn btn-primary-orange" %>
+  <% end %>
+</div>
+
