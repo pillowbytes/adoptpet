@@ -59,6 +59,11 @@ class PetsController < ApplicationController
     redirect_to pets_path
   end
 
+  def modal
+    @pet = Pet.find(params[:id])
+    render partial: "pets/pet_modal", locals: { pet: @pet }
+  end
+
   private
 
   def pet_params

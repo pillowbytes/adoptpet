@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :pets
+  resources :pets do
+    member do
+      get :modal
+    end
+  end
   resources :orders, only: [:index, :show, :new, :create, :destroy]
 
   root to: "pets#index"
