@@ -1,0 +1,8 @@
+.large-profile-picture {
+  display: block;
+  width: 200px;  // Adjust as needed
+  height: 200px;
+  border-radius: 50%;  // Keeps it round
+  object-fit: cover;
+  margin-bottom: 15px;
+}
