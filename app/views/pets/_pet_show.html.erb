@@ -1,25 +1,25 @@
 <div class="pet-show">
-  <div class="pet-show-header text-center mb-4">
+  <div class="pet-show-header">
     <h1><strong>Detalhes do Animal</strong></h1>
   </div>
 
   <div class="row justify-content-center align-items-start">
-    <!-- Image Carousel Column -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <div class="pet-show-carousel" data-controller="carousel">
-        <% if pet.photos.attached? && pet.photos.any? %>
+    <!-- Image Column -->
+    <div class="col-md-6 d-flex justify-content-center align-items-start">
+      <div class="pet-show-image" data-controller="carousel">
+        <% if pet.photos.attached? %>
           <% pet.photos.each do |photo| %>
             <div data-carousel-target="item" class="carousel-item">
-              <%= cl_image_tag photo.key, class: "img-fluid rounded" %>
+              <%= cl_image_tag photo.key, class: "pet-show-img" %>
             </div>
           <% end %>
         <% elsif pet.species == "Cachorro" %>
           <div data-carousel-target="item" class="carousel-item">
-            <%= image_tag "dog", alt: pet.name, class: "img-fluid rounded" %>
+            <%= image_tag "dog", alt: pet.name, class: "pet-show-img" %>
           </div>
         <% else %>
           <div data-carousel-target="item" class="carousel-item">
-            <%= image_tag "cat", alt: pet.name, class: "img-fluid rounded" %>
+            <%= image_tag "cat", alt: pet.name, class: "pet-show-img" %>
           </div>
         <% end %>
 
@@ -35,33 +35,23 @@
       </div>
     </div>
 
-    <!-- Pet Information Column -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
+    <!-- Information Column -->
+    <div class="col-md-6 d-flex justify-content-center align-items-start">
       <div class="pet-show-info">
         <h2 class="pet-show-name">
           <%= pet.name %>
-          <% if pet.species == "Gato" %>
-            🐱
-          <% elsif pet.species == "Cachorro" %>
-            🐶
-          <% end %>
+            <i class="fa-solid fa-paw"></i>
         </h2>
 
-        <p>
-          <i class="fa-solid fa-cake-candles"></i> <strong><%= pet.age %> anos</strong>
-        </p>
-        <p>
-          <i class="fa-solid fa-venus-mars"></i> <strong><%= pet.gender %></strong>
-        </p>
-        <p>
-          <i class="fa-solid fa-paw"></i> <strong><%= pet.size %></strong>
-        </p>
+        <p><i class="fa-solid fa-cake-candles"></i> <strong><%= pet.age %> anos</strong></p>
+        <p><i class="fa-solid fa-venus-mars"></i> <strong><%= pet.gender %></strong></p>
+        <p><i class="fa-solid fa-paw"></i> <strong><%= pet.size %></strong></p>
 
         <p class="pet-show-description">
           <%= pet.description.present? ? pet.description : "Descrição não fornecida." %>
         </p>
 
-        <div class="pet-show-buttons mt-3">
+        <div class="pet-show-buttons">
           <%= link_to "Adote #{pet.name}", new_user_order_path(pet_id: pet.id), class: "btn btn-primary-orange" %>
         </div>
       </div>
