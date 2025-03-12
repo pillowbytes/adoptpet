@@ -1,24 +1,27 @@
 import { Controller } from "@hotwired/stimulus";
-import AnimatedNumber from "stimulus-animated-number";
 
 export default class extends Controller {
   static targets = ["counter"];
-  static values = { count: Number };
 
   connect() {
-    this.countValue = this.countValue || 250;
-    this.updateCounter();
+    this.startingCount = this.calculateInitialCount();
+    this.counterTarget.textContent = this.startingCount;
     this.incrementRandomly();
   }
 
-  updateCounter() {
-    this.counterTarget.textContent = this.countValue;
+  calculateInitialCount() {
+    const baseNumber = 100;
+    const timestamp = Math.floor(Date.now() / 1000);
+    const variation = timestamp % 100;
+
+    return baseNumber + variation;
   }
 
   incrementRandomly() {
     setInterval(() => {
-      this.countValue += Math.floor(Math.random() * 3) + 1; // Increase 1-3
-      this.updateCounter();
-    }, Math.floor(Math.random() * 5000) + 3000); // Every 3-8 seconds
+      const increment = Math.floor(Math.random() * 3) + 1;
+      this.startingCount += increment;
+      this.counterTarget.textContent = this.startingCount;
+    }, Math.floor(Math.random() * 5000) + 3000);
   }
 }
