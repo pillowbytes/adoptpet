@@ -31,7 +31,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params.merge(is_avalable: true))
+    @pet = Pet.new(pet_params)
 
     if @pet.save
       redirect_to pet_path(@pet), notice: "Amiguinho Criado!"
