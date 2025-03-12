@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
   def index
     filters = params[:filters] || {}
-    # @pets = Pet.where(is_available: true)
-    @pets = Pet.all
+    @pets = Pet.where(is_available: true)
+    # @pets = Pet.all
 
     @pets = @pets.where(species: filters[:species]) if filters[:species].present?
     @pets = @pets.where(gender: filters[:gender]) if filters[:gender].present?
@@ -31,7 +31,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
+    @pet = Pet.new(pet_params.merge(is_avalable: true))
 
     if @pet.save
       redirect_to pet_path(@pet), notice: "Amiguinho Criado!"
