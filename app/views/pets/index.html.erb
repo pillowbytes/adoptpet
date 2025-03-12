@@ -8,7 +8,7 @@
         <%= image_tag pet.photos.attached? ? url_for(pet.photos.first) : asset_path("placeholder.png"),
             alt: pet.name,
             class: "pet-image",
-            data: { action: "click->modal#open", "modal-url": pet_path(pet) } %>
+            data: { action: "click->modal#open", "modal-url": modal_pet_path(pet) } %>
         <div class="pet-info">
           <div class="pet-name"><strong><%= pet.name %></strong></div>
           <div class="pet-gender"><%= pet.gender %></div>

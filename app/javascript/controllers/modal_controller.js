@@ -9,24 +9,16 @@ export default class extends Controller {
 
   open(event) {
     event.preventDefault();
-    console.log("Open triggered!");
+    console.log("Modal open triggered!");
 
     window.scrollTo(0, 0);
-
     const url = event.currentTarget.dataset.modalUrl;
 
-    fetch(url, {
-      headers: { "Accept": "text/vnd.turbo-stream.html" }
-    })
+    fetch(url, { headers: { Accept: "text/html" } })
       .then(response => response.text())
       .then(html => {
-        // Insert the partial into our modal body
         this.modalBodyTarget.innerHTML = html;
-
-        // Show the modal overlay
         document.getElementById("modal").style.display = "block";
-
-        // Disable scrolling on the main page
         document.body.style.overflow = "hidden";
       })
       .catch(error => console.error("Error loading modal content:", error));
@@ -34,15 +26,8 @@ export default class extends Controller {
 
   close(event) {
     event.preventDefault();
-    console.log("Close triggered!");
-
-    // Hide the modal overlay
     document.getElementById("modal").style.display = "none";
-
-    // Clear the inserted partial
     this.modalBodyTarget.innerHTML = "";
-
-    // Re-enable scrolling on the main page
     document.body.style.overflow = "";
   }
 }
