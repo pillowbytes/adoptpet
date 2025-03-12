@@ -1,22 +1,21 @@
 
 <div class="input">
   <div class="blob">
-    <div class="login form">
-      <div class=".textbox">
+    <div class="form-container" style="padding: 25px;">
+      <div class="form-group">
 <h2>Log in</h2>
-<div class="form-inputs">
+<div class="form-inputs ">
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
               <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
                 <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-</div>
-          <div class="form-actions">
-            <%= f.button :submit, "Log in", class: "btn btn-primary-orange" %>
+                <div class="form-actions">
+                  <%= f.button :submit, "Log in", class: "btn btn-primary-orange" %>
+                  <% end %>
+                  <%= render "devise/shared/links" %>
+                </div>
+              </div>
+            </div>
           </div>
-          <% end %>
-
-          <%= render "devise/shared/links" %>
         </div>
       </div>
-        </div>
-    </div>
