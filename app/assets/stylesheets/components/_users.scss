@@ -1,8 +1,8 @@
 .login{
   position: relative;
   z-index: 2;
-  background: linear-gradient(270deg, #5D54A4, #6A679E);
   border-radius: 24px;
+  background: #ffc65a;
   padding: 50px 8px 29px;
   width: 400px;
   display: flex;
@@ -39,7 +39,7 @@
   margin: 0 0 20px;
 }
 
-.login :is(input, button){
+.login :is(input){
   height: 50%;
   font-family: inherit;
   font-size: 20px;
@@ -70,9 +70,9 @@ input{
 .blob{
   position: fixed;
   z-index: 1;
-  top: 50%;
+  top: 41%;
   left: 50%;
-  width: 85vw;
+  width: 69vw;
   max-width: 400px;
   translate: -50% -50%;
 }
