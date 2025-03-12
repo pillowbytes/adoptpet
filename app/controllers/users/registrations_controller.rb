@@ -1,6 +1,27 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
+
   def create
-    super # chama o método original do Devise, e você pode adicionar lógica adicional aqui.
+    super
+  end
+
+  def update
+    super do |resource|
+      return render js: "window.location.reload();" if request.format.js?
+    end
+  end
+
+  private
+
+  # Allow extra params for sign up
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :avatar])
+  end
+
+  # Allow extra params for account update
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :avatar])
   end
 end
 
@@ -44,15 +65,6 @@ end
 
   # protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

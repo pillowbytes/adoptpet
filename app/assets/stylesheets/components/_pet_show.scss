@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-.pet-show-header h1 {
-  color: $primary-blue;
+.pet-show-header {
+  color: $primary-orange;
   margin-bottom: 20px;
   font-weight: 200;
 }
@@ -12,30 +12,40 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-left: 50px;
 }
 
 .pet-show-img {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   height: auto;
   border-radius: 20px;
   object-fit: cover;
+  margin-right: 20px;
+  border: 2px solid #2259AB;
 }
 
 .pet-show-info {
   background: white;
   border: 2px solid #2259AB;
   border-radius: 36px;
-  padding: 20px;
+  padding: 30px;
   text-align: left;
-  width: 100%;
+  max-width: 400px;
+  margin: auto;
+
+  p {
+    color: $primary-blue;
+  }
 }
 
 .pet-show-name {
   font-family: "Alfa Slab One", sans-serif;
   font-size: 26px;
-  color: #2259AB;
-  text-align: center;
+  background: linear-gradient(to right, $primary-blue, $primary-blue-light);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pet-show-buttons {
@@ -44,4 +54,9 @@
   gap: 10px;
   justify-content: center;
   margin-top: 20px;
+}
+
+.pet-show-description {
+  margin-top: 15px;
+  line-height: 1.4;
 }

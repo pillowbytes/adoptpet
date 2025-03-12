@@ -4,6 +4,8 @@
   <%= f.input :species, collection: ["Cachorro", "Gato", "Outros"] %>
   <%= f.input :size, collection: ["Pequeno", "Médio", "Grande"] %>
   <%= f.input :gender, collection: ["Macho", "Fêmea"] %>
+  <%= f.input :description %>
+
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
   <%= f.button :submit, class: "btn btn-primary-blue" %>

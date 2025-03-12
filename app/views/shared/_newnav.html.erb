@@ -18,13 +18,17 @@
       <a href="<%= root_path %>" class="nav-link bold">Quero Adotar</a>
 
       <div class="dropdown">
-        <%= image_tag asset_path("user_icon.png"),
-          alt: "Avatar",
-          class: "avatar dropdown-toggle",
-          id: "navbarDropdown",
-          data: { bs_toggle: "dropdown" },
-          'aria-haspopup': true, 'aria-expanded': false %>
-
+        <% if current_user.avatar.attached? %>
+          <%= cl_image_tag current_user.avatar.key,
+            transformation: [{ width: 300, height: 300, crop: "fill" }],
+            alt: "Avatar",
+            class: "avatar dropdown-toggle",
+            id: "navbarDropdown",
+            data: { bs_toggle: "dropdown" },
+            'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <img src="https://res.cloudinary.com/dq7l8216n/image/upload/v1633660004/adoptpet/avatar-placeholder.png" alt="Avatar" class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <% end %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <%= link_to "Minhas Adoções", orders_path, class: "dropdown-item" %>
           <%= link_to "Meu Perfil", edit_user_registration_path, class: "dropdown-item" %>
