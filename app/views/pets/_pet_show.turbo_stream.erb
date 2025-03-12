@@ -1,44 +1,59 @@
 <div class="pet-show">
-  <h1 class="pet-show-header">
-  Detalhes do Animal
-  </h1>
+  <div class="pet-show-header">
+    <h1><strong>Detalhes do Animal</strong></h1>
+  </div>
 
   <div class="row justify-content-center align-items-start">
-
     <div class="col-md-6 d-flex justify-content-start">
-      <div class="pet-show-image">
+      <!-- Stimulus Carousel Container -->
+      <div class="pet-show-image" data-controller="carousel">
         <% if @pet.photos.attached? && @pet.photos.any? %>
           <% @pet.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, class: "pet-show-img" %>
+            <div data-carousel-target="item" class="carousel-item">
+              <%= cl_image_tag photo.key, class: "pet-show-img" %>
+            </div>
           <% end %>
         <% elsif @pet.species == "Cachorro" %>
-          <%= image_tag "dog", alt: @pet.name, class: "pet-show-img" %>
+          <div data-carousel-target="item" class="carousel-item">
+            <%= image_tag "dog", alt: @pet.name, class: "pet-show-img" %>
+          </div>
         <% else %>
-          <%= image_tag "cat", alt: @pet.name, class: "pet-show-img" %>
+          <div data-carousel-target="item" class="carousel-item">
+            <%= image_tag "cat", alt: @pet.name, class: "pet-show-img" %>
+          </div>
         <% end %>
+
+        <!-- Carousel controls container (will be hidden if only one image) -->
+        <div data-carousel-target="controls" class="carousel-controls">
+          <button type="button" data-action="click->carousel#previous" class="carousel-btn carousel-btn-left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button type="button" data-action="click->carousel#next" class="carousel-btn carousel-btn-right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="col-md-6 d-flex justify-content-center">
       <div class="pet-show-info">
-
         <h2 class="pet-show-name">
           <%= @pet.name %>
           <% if @pet.species == "Gato" %>
-            <span class="emoji">🐱</span>
+            🐱
           <% elsif @pet.species == "Cachorro" %>
-            <span class="emoji">🐶</span>
+            🐶
           <% end %>
         </h2>
 
         <p>
-          <i class="fa-solid fa-cake-candles"></i> <strong>  <%= @pet.age %> anos</strong>
+          <i class="fa-solid fa-cake-candles"></i> <strong><%= @pet.age %> anos</strong>
         </p>
         <p>
-          <i class="fa-solid fa-venus-mars"></i> <strong>  <%= @pet.gender %></strong>
+          <i class="fa-solid fa-venus-mars"></i> <strong><%= @pet.gender %></strong>
         </p>
         <p>
-          <i class="fa-solid fa-paw"></i> <strong>  <%= @pet.size %></strong>
+          <i class="fa-solid fa-paw"></i> <strong><%= @pet.size %></strong>
         </p>
 
         <p class="pet-show-description">

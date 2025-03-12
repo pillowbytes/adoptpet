@@ -46,8 +46,11 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-    @pet.update(pet_params)
-    redirect_to pet_path(@pet)
+    if @pet.update(pet_params)
+      redirect_to pet_path(@pet), notice: "Entrada Atualizada"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
