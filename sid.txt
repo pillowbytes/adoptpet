@@ -1,0 +1,2 @@
+
+Pet.where(is_available: nil).update_all(is_available: true)
